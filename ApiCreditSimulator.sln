@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCreditSimulator.Api", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCreditSimulator.Shared", "ApiCreditSimulator.Shared\ApiCreditSimulator.Shared.csproj", "{459A1BC5-14E1-4506-9D44-C98D81B6518D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCreditSimulator.Access", "ApiCreditSimulator.Access\ApiCreditSimulator.Access.csproj", "{58DFFC5D-BD86-440A-A69A-ADB6137C8F38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{459A1BC5-14E1-4506-9D44-C98D81B6518D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{459A1BC5-14E1-4506-9D44-C98D81B6518D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{459A1BC5-14E1-4506-9D44-C98D81B6518D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58DFFC5D-BD86-440A-A69A-ADB6137C8F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58DFFC5D-BD86-440A-A69A-ADB6137C8F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58DFFC5D-BD86-440A-A69A-ADB6137C8F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58DFFC5D-BD86-440A-A69A-ADB6137C8F38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
