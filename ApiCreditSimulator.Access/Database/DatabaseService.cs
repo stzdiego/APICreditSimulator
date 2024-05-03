@@ -1,113 +1,138 @@
+// <copyright file="DatabaseService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace ApiCreditSimulator.Access.Database;
 using System.Linq.Expressions;
 using ApiCreditSimulator.Access.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace ApiCreditSimulator.Access.Database;
-
+/// <summary>
+/// Defines the <see cref="DatabaseService" />.
+/// </summary>
 public class DatabaseService : IDatabaseService
 {
-    private readonly IApiCreditSimulatorContext _context;
-    private readonly ILogger<DatabaseService> _logger;
+    private readonly IApiCreditSimulatorContext context;
+    private readonly ILogger<DatabaseService> logger;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DatabaseService"/> class.
+    /// </summary>
+    /// <param name="context">Context.</param>
+    /// <param name="logger">Logger.</param>
     public DatabaseService(IApiCreditSimulatorContext context, ILogger<DatabaseService> logger)
     {
-        _context = context;
-        _logger = logger;
+        this.context = context;
+        this.logger = logger;
     }
 
-    public async Task<T> Create<T>(T entity) where T : class
+    /// <inheritdoc/>
+    public async Task<T> Create<T>(T entity)
+        where T : class
     {
         try
         {
-            await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await this.context.Set<T>().AddAsync(entity);
+            await this.context.SaveChangesAsync();
             return entity;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error creating entity");
+            this.logger.LogError(ex, "Error creating entity");
             throw;
         }
     }
 
-    public async Task<T?> Find<T>(int id) where T : class
+    /// <inheritdoc/>
+    public async Task<T?> Find<T>(int id)
+        where T : class
     {
         try
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await this.context.Set<T>().FindAsync(id);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error finding entity");
+            this.logger.LogError(ex, "Error finding entity");
             throw;
         }
     }
 
-    public async Task<T> Update<T>(T entity) where T : class
+    /// <inheritdoc/>
+    public async Task<T> Update<T>(T entity)
+        where T : class
     {
         try
         {
-            _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
+            this.context.Set<T>().Update(entity);
+            await this.context.SaveChangesAsync();
             return entity;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error updating entity");
+            this.logger.LogError(ex, "Error updating entity");
             throw;
         }
     }
 
-    public async Task Delete<T>(T entity) where T : class
+    /// <inheritdoc/>
+    public async Task Delete<T>(T entity)
+        where T : class
     {
         try
         {
-            _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();
+            this.context.Set<T>().Remove(entity);
+            await this.context.SaveChangesAsync();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error deleting entity");
+            this.logger.LogError(ex, "Error deleting entity");
             throw;
         }
     }
 
-    public async Task<List<T>> GetAll<T>() where T : class
+    /// <inheritdoc/>
+    public async Task<List<T>> GetAll<T>()
+        where T : class
     {
         try
         {
-            return await _context.Set<T>().ToListAsync();
+            return await this.context.Set<T>().ToListAsync();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error getting all entities");
+            this.logger.LogError(ex, "Error getting all entities");
             throw;
         }
     }
 
-    public async Task<List<T>> GetWhere<T>(Expression<Func<T, bool>> predicate) where T : class
+    /// <inheritdoc/>
+    public async Task<List<T>> GetWhere<T>(Expression<Func<T, bool>> predicate)
+        where T : class
     {
         try
         {
-            return await _context.Set<T>().Where(predicate).ToListAsync();
+            return await this.context.Set<T>().Where(predicate).ToListAsync();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error getting entities by predicate");
+            this.logger.LogError(ex, "Error getting entities by predicate");
             throw;
         }
     }
 
-    public async Task<bool> Exists<T>(int id) where T : class
+    /// <inheritdoc/>
+    public async Task<bool> Exists<T>(int id)
+        where T : class
     {
         try
         {
-            return await _context.Set<T>().FindAsync(id) != null;
+            return await this.context.Set<T>().FindAsync(id) != null;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error checking if entity exists");
+            this.logger.LogError(ex, "Error checking if entity exists");
             throw;
         }
     }
