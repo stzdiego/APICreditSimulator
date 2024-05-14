@@ -1,6 +1,5 @@
-// <copyright file="UsersController.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+// Copyright (c) Diego Santacruz. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ApiCreditSimulator.Api.Controllers;
 
@@ -10,6 +9,9 @@ using ApiCreditSimulator.Shared.Dto;
 using ApiCreditSimulator.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 
+/// <summary>
+/// Controller for users.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
@@ -34,7 +36,7 @@ public class UsersController : ControllerBase
     /// <param name="dto">The dto<see cref="GetDto"/>.</param>
     /// <returns>The <see cref="IActionResult"/>.</returns>
     [HttpGet]
-    public IActionResult Get(GetDto dto)
+    public IActionResult Get([FromQuery] GetDto dto)
     {
         try
         {

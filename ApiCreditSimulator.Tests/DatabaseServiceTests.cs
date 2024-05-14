@@ -1,3 +1,6 @@
+// Copyright (c) Diego Santacruz. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 namespace ApiCreditSimulator.Tests;
 using ApiCreditSimulator.Access.Context;
 using ApiCreditSimulator.Access.Database;
@@ -54,13 +57,10 @@ public class DatabaseServiceTests
     //     // Arrange
     //     var entity = new User();
     //     var dbSetMock = new Mock<DbSet<User>>();
-
     //     dbSetMock.Setup(x => x.FindAsync(It.IsAny<int>(), default)).ReturnsAsync(entity);
     //     this.contextMock.Setup(x => x.Set<User>()).Returns(dbSetMock.Object);
-
     //     // Act
     //     var result = await this.databaseService.Find<User>(1);
-
     //     // Assert
     //     Assert.NotNull(result);
     // }

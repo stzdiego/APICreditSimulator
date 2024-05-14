@@ -1,9 +1,9 @@
-// <copyright file="Program.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+// Copyright (c) Diego Santacruz. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 #pragma warning disable SA1200 // UsingDirectivesMustBePlacedWithinNamespace
 using ApiCreditSimulator.Access.Context;
 using ApiCreditSimulator.Access.Database;
+using Microsoft.EntityFrameworkCore;
 #pragma warning restore SA1200 // UsingDirectivesMustBePlacedWithinNamespace
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +14,13 @@ builder.Services.AddDbContext<IApiCreditSimulatorContext, SQLiteContext>();
 builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<SQLiteContext>();
+    context.Database.Migrate();
+}
 
 app.MapControllers();
 app.UseSwagger();

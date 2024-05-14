@@ -1,23 +1,27 @@
-// <copyright file="SQLiteContext.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+// Copyright (c) Diego Santacruz. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ApiCreditSimulator.Access.Context;
 
 using ApiCreditSimulator.Shared.Bases;
 using ApiCreditSimulator.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 /// <summary>
 /// Defines the <see cref="SQLiteContext" />.
 /// </summary>
 public class SQLiteContext : DbContext, IApiCreditSimulatorContext
 {
+    private readonly IConfiguration configuration;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SQLiteContext"/> class.
     /// </summary>
-    public SQLiteContext()
+    /// <param name="configuration">The configuration<see cref="IConfiguration"/>.</param>
+    public SQLiteContext(IConfiguration configuration)
     {
+        this.configuration = configuration;
     }
 
     /// <summary>
@@ -41,7 +45,7 @@ public class SQLiteContext : DbContext, IApiCreditSimulatorContext
     /// <param name="optionsBuilder">The optionsBuilder<see cref="DbContextOptionsBuilder"/>.</param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=ApiCreditSimulator.db");
+        optionsBuilder.UseSqlite(this.configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ApiCreditSimulator.Api"));
     }
 
 #pragma warning disable SA1202 // ElementsMustBeOrderedByAccess
