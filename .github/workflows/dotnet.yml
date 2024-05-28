@@ -23,7 +23,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Install nuget source
-      run: dotnet nuget add source https://api.nuget.org/v3/index.json -nuget.org --name nuget.org
+      run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
     - name: Install dotnet-format
       run: dotnet tool install -g dotnet-format
     - name: Install dotnet-outdated
