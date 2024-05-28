@@ -50,7 +50,7 @@ repos:
       # Este hook ejecuta las pruebas unitarias antes de cada commit
       - id: dotnet-test
         name: Run .NET unit tests
-        entry: dotnet test ./ApiCreditSimulator.Tests/ApiCreditSimulator.Tests.csproj
+        entry: dotnet test ApiCreditSimulator.Tests/ApiCreditSimulator.Tests.csproj
         language: system
         # Este hook se ejecuta solo cuando se modifican los archivos .cs en el directorio ApiCreditSimulator.Tests
         files: '.*\.cs$'
