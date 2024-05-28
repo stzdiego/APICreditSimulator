@@ -22,6 +22,16 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: Install dotnet-format
+      run: dotnet tool install -g dotnet-format
+    - name: Install dotnet-outdated
+      run: dotnet tool install -g dotnet-outdated
+    - name: Install dotnet-test
+      run: dotnet tool install -g dotnet-test
+    - name: Format
+      run: dotnet format --check
+    - name: Outdated
+      run: dotnet outdated
     - name: Build
       run: dotnet build --no-restore
     - name: Test
