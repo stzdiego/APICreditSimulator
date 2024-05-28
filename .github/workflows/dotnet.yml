@@ -23,11 +23,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Install dotnet-format
-      run: dotnet tool install -g dotnet-format
+      run: dotnet tool install -g dotnet-format --version "8.0.446201" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json
     - name: Install dotnet-outdated
       run: dotnet tool install -g dotnet-outdated-tool
     - name: Format
-      run: dotnet format --verify-no-changes
+      run: dotnet format --verify-no-changes --severity error
     - name: Outdated
       run: dotnet outdated
     - name: Build

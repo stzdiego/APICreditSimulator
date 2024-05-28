@@ -1,13 +1,5 @@
 # Este es el repositorio de donde se obtiene el hook para formatear el código .NET
 repos:
-  - repo: https://github.com/dotnet/format
-    # Esta es la versión del hook que se está utilizando
-    rev: v8.0.453106
-    hooks:
-      # Este hook formatea el código .NET antes de cada commit
-      - id: dotnet-format
-        name: Format .NET project
-
   # Estos son hooks locales, definidos específicamente para este repositorio
   - repo: local
     hooks:
@@ -36,6 +28,15 @@ repos:
         language: system
         # Este hook se ejecuta solo cuando se modifican los archivos .cs en el directorio ApiCreditSimulator.Shared
         files: '^ApiCreditSimulator\.Shared/.*\.cs$'
+        pass_filenames: false
+
+      # Este hook formatea el código antes de cada commit
+      - id: dotnet-format
+        name: Format .NET code
+        entry: dotnet format
+        language: system
+        # Este hook se ejecuta solo cuando se modifican los archivos .cs
+        files: '\.cs$'
         pass_filenames: false
 
       # Este hook verifica las dependencias .NET desactualizadas antes de cada commit
