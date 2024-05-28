@@ -22,12 +22,10 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Install nuget source
-      run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org2
     - name: Install dotnet-format
       run: dotnet tool install -g dotnet-format
     - name: Install dotnet-outdated
-      run: dotnet tool install -g dotnet-outdated
+      run: dotnet tool install -g dotnet-outdated-tool
     - name: Install dotnet-test
       run: dotnet tool install -g dotnet-test
     - name: Format
