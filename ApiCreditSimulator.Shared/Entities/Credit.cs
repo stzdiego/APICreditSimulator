@@ -18,27 +18,27 @@ public class Credit : BaseEntity
     /// <summary>
     /// Gets or sets the Amount.
     /// </summary>
-    public decimal Amount { get; set; }
-
-    /// <summary>
-    /// Gets or sets the Term.
-    /// </summary>
-    public int Term { get; set; }
-
-    /// <summary>
-    /// Gets or sets the Rate.
-    /// </summary>
-    public decimal Rate { get; set; }
+    public double Amount { get; set; }
 
     /// <summary>
     /// Gets or sets the MonthlyFee.
     /// </summary>
-    public decimal MonthlyFee { get; set; }
+    public double TotalInterest { get; set; }
 
     /// <summary>
-    /// Gets or sets the Total.
+    /// Gets or sets the AnnualNominalRate.
     /// </summary>
-    public decimal Total { get; set; }
+    public double AnnualNominalRate { get; set; }
+
+    /// <summary>
+    /// Gets or sets the AnnualEffectiveRate.
+    /// </summary>
+    public double AnnualEffectiveRate { get; set; }
+
+    /// <summary>
+    /// Gets or sets the TotalPayment.
+    /// </summary>
+    public double TotalPayment { get; set; }
 
     /// <summary>
     /// Gets or sets the UserId.

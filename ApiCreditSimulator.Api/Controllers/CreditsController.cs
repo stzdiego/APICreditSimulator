@@ -81,6 +81,25 @@ public class CreditsController : ControllerBase
                 TotalPayment = totalPayment,
             };
 
+            var description = $"Simulate credit for user {user.Nickname} with amount {amount} and rate {rate} for {months} months.";
+
+            await this.databaseService.Create<Credit>(new Credit
+            {
+                Description = description,
+                Amount = amount,
+                TotalInterest = totalInterest,
+                AnnualNominalRate = annualNominalRate,
+                AnnualEffectiveRate = annualEffectiveRate,
+                TotalPayment = totalPayment,
+                UserId = user.Id,
+            });
+
+            await this.databaseService.Create<UserLog>(new UserLog
+            {
+                Description = description,
+                UserId = user.Id,
+            });
+
             return this.Ok(responseDto);
         }
         catch (Exception ex)
